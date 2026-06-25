@@ -99,6 +99,33 @@
       font-size: 0.9em;
       color: #777;
     }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.1em;
+    }
+    
+    .research-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 1.1em 1.2em;
+      background-color: #fafafa;
+    }
+    
+    .research-card .item-title {
+      font-size: 1.05em;
+      margin-bottom: 0.35em;
+    }
+    
+    .paper-links {
+      margin-top: 0.6em;
+    }
+    
+    .paper-links a {
+      margin-right: 8px;
+    }
+
   </style>
 </head>
 
@@ -128,21 +155,21 @@
   </p>
 
   <h2>Featured Research</h2>
-
-  <div class="item">
-    <div class="tag">Surface EMG Enhancement</div>
-    <div class="item-title">TrustEMG-Net: Enhancing Contaminated Surface EMG Signals</div>
-    <div class="note">
-      Developed a deep learning framework for surface EMG enhancement using a
-      representation-masking Transformer with U-Net. This work aims to improve
-      the reliability of surface EMG signals under realistic contamination.
-    </div>
-    <div>
-      [<a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank">Paper</a>]
-      [<a href="https://arxiv.org/abs/2410.03843" target="_blank">arXiv</a>]
+  <div class="featured-grid">
+    <div class="research-card">
+      <div class="tag">Surface EMG Enhancement</div>
+      <div class="item-title">TrustEMG-Net: Enhancing Contaminated Surface EMG Signals</div>
+      <div class="note">
+        Developed a deep learning framework for surface EMG enhancement using a
+        representation-masking Transformer with U-Net. This work aims to improve
+        the reliability of surface EMG signals under realistic contamination.
+      </div>
+      <div>
+        [<a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank">Paper</a>]
+        [<a href="https://arxiv.org/abs/2410.03843" target="_blank">arXiv</a>]
+      </div>
     </div>
   </div>
-
   <div class="item">
     <div class="tag">Signal Quality Assessment</div>
     <div class="item-title">Surface EMG Signal Quality Assessment</div>

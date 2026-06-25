@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +8,45 @@
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
-      max-width: 850px;
+      max-width: 900px;
       margin: 60px auto;
       padding: 0 24px;
       line-height: 1.6;
       color: #222;
+      background-color: #fff;
     }
 
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.2em;
+      font-size: 2.3em;
+      margin-bottom: 0.15em;
     }
 
     h2 {
-      margin-top: 2em;
+      margin-top: 2.2em;
       border-bottom: 1px solid #ddd;
       padding-bottom: 0.3em;
+      font-size: 1.35em;
+    }
+
+    h3 {
+      margin-top: 1.4em;
+      margin-bottom: 0.4em;
+      font-size: 1.05em;
     }
 
     .subtitle {
-      font-size: 1.1em;
+      font-size: 1.08em;
       color: #555;
-      margin-bottom: 1.5em;
+      margin-bottom: 1.2em;
+    }
+
+    .links {
+      margin-bottom: 1.8em;
+    }
+
+    .links a {
+      margin-right: 14px;
+      white-space: nowrap;
     }
 
     a {
@@ -44,8 +62,35 @@
       padding-left: 1.3em;
     }
 
+    li {
+      margin-bottom: 0.45em;
+    }
+
+    .publication li {
+      margin-bottom: 0.8em;
+    }
+
+    .year {
+      font-weight: bold;
+      color: #444;
+    }
+
+    .item {
+      margin-bottom: 1.0em;
+    }
+
+    .item-title {
+      font-weight: bold;
+    }
+
+    .note {
+      color: #666;
+    }
+
     footer {
-      margin-top: 3em;
+      margin-top: 3.2em;
+      padding-top: 1em;
+      border-top: 1px solid #eee;
       font-size: 0.9em;
       color: #777;
     }
@@ -58,47 +103,175 @@
   <div class="subtitle">
     Ph.D. Student<br>
     Graduate Institute of Communication Engineering, National Taiwan University<br>
+    Research Assistant, Bio-ASP Lab<br>
     Research Center for Information Technology Innovation, Academia Sinica
+  </div>
+
+  <div class="links">
+    <a href="mailto:ericw13579@gmail.com">Email</a>
+    <a href="https://scholar.google.com.tw/citations?user=ranu1fEAAAAJ&hl=zh-TW" target="_blank">Google Scholar</a>
+    <a href="https://github.com/eric-wang135" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/kuan-chen-wang" target="_blank">LinkedIn</a>
   </div>
 
   <p>
     I am a Ph.D. student at the Graduate Institute of Communication Engineering,
-    National Taiwan University, and affiliated with the Research Center for
-    Information Technology Innovation, Academia Sinica. My research focuses on
-    biomedical signal processing, deep learning, and signal quality assessment,
-    with particular interests in surface electromyography, electrocardiography,
-    signal denoising, and super-resolution.
+    National Taiwan University, and a research assistant at the Bio-ASP Lab,
+    Research Center for Information Technology Innovation, Academia Sinica.
+    My research focuses on biomedical signal processing, deep learning, and
+    speech enhancement, with particular interests in surface electromyography,
+    electrocardiography, signal quality assessment, signal enhancement,
+    super-resolution, and multimodal systems.
   </p>
 
   <h2>Research Interests</h2>
   <ul>
     <li>Biomedical signal processing</li>
-    <li>Surface electromyography</li>
-    <li>Electrocardiography</li>
+    <li>Surface electromyography and electrocardiography</li>
     <li>Signal quality assessment</li>
-    <li>Signal denoising and super-resolution</li>
+    <li>Signal enhancement, denoising, and super-resolution</li>
+    <li>Speech enhancement and multimodal learning</li>
     <li>Deep learning for healthcare applications</li>
   </ul>
 
   <h2>Publications</h2>
+
+  <h3>Journal Articles</h3>
+  <ul class="publication">
+    <li>
+      <strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, et al.,
+      “TrustEMG-Net: Using Representation-Masking Transformer with U-Net for
+      Surface Electromyography Enhancement,”
+      <em>IEEE Journal of Biomedical and Health Informatics</em>, 2024.
+    </li>
+  </ul>
+
+  <h3>Conference Papers</h3>
+  <ul class="publication">
+    <li>
+      Y.-T. Liu, <strong>K.-C. Wang</strong>, R. Chao, et al.,
+      “MSEMG: Surface Electromyography Denoising with a Mamba-based Efficient Network,”
+      in <em>Proc. IEEE ICASSP</em>, 2025.
+    </li>
+
+    <li>
+      <strong>K.-C. Wang</strong>, J. Lin, I. Chiu, et al.,
+      “MSECG: Incorporating Mamba for Robust and Efficient ECG Super-Resolution,”
+      in <em>Proc. IEEE ICASSP</em>, 2025.
+    </li>
+
+    <li>
+      W.-W. Hsieh, H.-W. Chi, <strong>K.-C. Wang</strong>, et al.,
+      “OMPAL: Bridging Speech and Learning with an Open-Source Mandarin
+      Pronunciation Assessment Corpus for Global Learners,”
+      in <em>Proc. Interspeech</em>, 2025.
+    </li>
+
+    <li>
+      C.-Y. Lee, <strong>K.-C. Wang</strong>, K.-C. Liu, et al.,
+      “A Non-Intrusive Neural Quality Assessment Model for Surface
+      Electromyography Signals,”
+      in <em>Proc. IEEE EMBC</em>, 2024.
+    </li>
+
+    <li>
+      Y.-T. Liu, <strong>K.-C. Wang</strong>, K.-C. Liu, et al.,
+      “SDEMG: Score-Based Diffusion Model for Surface Electromyographic Signal Denoising,”
+      in <em>Proc. IEEE ICASSP</em>, 2024.
+    </li>
+
+    <li>
+      <strong>K.-C. Wang</strong>, Y.-J. Li, W.-L. Chen, et al.,
+      “Bridging the Gap: Integrating Pre-trained Speech Enhancement and
+      Recognition Models for Robust Speech Recognition,”
+      in <em>Proc. EUSIPCO</em>, 2024.
+    </li>
+
+    <li>
+      <strong>K.-C. Wang</strong>, K.-C. Liu, S.-Y. Peng, and Y. Tsao,
+      “ECG Artifact Removal from Single-Channel Surface EMG Using Fully
+      Convolutional Networks,”
+      in <em>Proc. IEEE ICASSP</em>, 2023.
+    </li>
+
+    <li>
+      <strong>K.-C. Wang</strong>, K.-C. Liu, H.-M. Wang, and Y. Tsao,
+      “EMGSE: Acoustic/EMG Fusion for Multimodal Speech Enhancement,”
+      in <em>Proc. IEEE ICASSP</em>, 2022.
+    </li>
+  </ul>
+
+  <h2>Awards</h2>
   <ul>
-    <li>
-      K.-C. Wang et al., “TrustEMG-Net: A deep learning framework for surface
-      electromyography signal denoising,” <em>IEEE Journal of Biomedical and
-      Health Informatics</em>, 2024.
-    </li>
-    <li>
-      More publications will be added soon.
-    </li>
+    <li><span class="year">2025</span> Hon Hai Technology Award</li>
+    <li><span class="year">2025</span> TMUH Medical Innovation Proposal Competition, Bronze Award</li>
+    <li><span class="year">2024</span> IEEE Signal Processing Society Award</li>
+  </ul>
+
+  <h2>Education</h2>
+
+  <div class="item">
+    <div class="item-title">Ph.D. Student, Graduate Institute of Communication Engineering</div>
+    <div>National Taiwan University, 2023–present</div>
+    <div class="note">Advisors: Prof. Ping-Cheng Yeh and Dr. Yu Tsao</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">M.S., Graduate Institute of Communication Engineering</div>
+    <div>National Taiwan University, 2021–2023</div>
+    <div class="note">GPA: 4.3/4.3; Phi Tau Phi Scholastic Honor Society</div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">B.S., Department of Electrical Engineering</div>
+    <div>National Taiwan University, 2012–2016</div>
+  </div>
+
+  <h2>Experience</h2>
+
+  <div class="item">
+    <div class="item-title">Research Assistant</div>
+    <div>Bio-ASP Lab, Research Center for Information Technology Innovation, Academia Sinica, 2022–present</div>
+    <div class="note">
+      Research on deep learning for physiological signal processing and speech enhancement.
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">Forensic Science Division</div>
+    <div>Ministry of Justice Investigation Bureau, 2021–2022</div>
+    <div class="note">
+      Worked on forensic speaker identification, audio tampering detection projects,
+      and ISO/IEC 17025 laboratory accreditation affairs.
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="item-title">General Affairs Section</div>
+    <div>MJIB Training Institute, 2019–2021</div>
+  </div>
+
+  <h2>Skills</h2>
+  <ul>
+    <li>Programming: Python, C++, MATLAB</li>
+    <li>Languages: TOEIC 940/990, TOEFL 111/120, GRE 330/340</li>
   </ul>
 
   <h2>Contact</h2>
   <p>
     Email:
     <a href="mailto:ericw13579@gmail.com">ericw13579@gmail.com</a><br>
+    Google Scholar:
+    <a href="https://scholar.google.com.tw/citations?user=ranu1fEAAAAJ&hl=zh-TW" target="_blank">
+      scholar.google.com.tw/citations?user=ranu1fEAAAAJ
+    </a><br>
+    GitHub:
+    <a href="https://github.com/eric-wang135" target="_blank">
+      github.com/eric-wang135
+    </a><br>
     LinkedIn:
-    <a href="https://www.linkedin.com/in/kuan-chen-wang">
-      www.linkedin.com/in/kuan-chen-wang
+    <a href="https://www.linkedin.com/in/kuan-chen-wang" target="_blank">
+      linkedin.com/in/kuan-chen-wang
     </a>
   </p>
 
@@ -107,3 +280,4 @@
   </footer>
 </body>
 </html>
+```

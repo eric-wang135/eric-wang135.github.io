@@ -75,7 +75,7 @@
     }
 
     .item {
-      margin-bottom: 1.0em;
+      margin-bottom: 1.15em;
     }
 
     .item-title {
@@ -84,6 +84,12 @@
 
     .note {
       color: #666;
+    }
+
+    .tag {
+      font-size: 0.9em;
+      color: #666;
+      margin-bottom: 0.25em;
     }
 
     footer {
@@ -97,13 +103,13 @@
 </head>
 
 <body>
-<h1>Kuan-Chen Wang</h1>
+  <h1>Kuan-Chen Wang</h1>
 
   <div class="subtitle">
     Ph.D. Student, National Taiwan University<br>
     Research Assistant, Research Center for Information Technology Innovation, Academia Sinica
   </div>
-  
+
   <div class="links">
     <a href="mailto:d12942016@ntu.edu.tw">Email</a>
     <a href="https://scholar.google.com.tw/citations?user=ranu1fEAAAAJ&hl=zh-TW" target="_blank">Google Scholar</a>
@@ -111,7 +117,7 @@
     <a href="https://www.linkedin.com/in/kuan-chen-wang" target="_blank">LinkedIn</a>
     <a href="cv.pdf" target="_blank">CV</a>
   </div>
-  
+
   <h2>Research Overview</h2>
   <p>
     My research focuses on developing deep learning methods for biomedical signal
@@ -121,7 +127,64 @@
     and data-quality challenges.
   </p>
 
+  <h2>Featured Research</h2>
 
+  <div class="item">
+    <div class="tag">Surface EMG Enhancement</div>
+    <div class="item-title">TrustEMG-Net: Enhancing Contaminated Surface EMG Signals</div>
+    <div class="note">
+      Developed a deep learning framework for surface EMG enhancement using a
+      representation-masking Transformer with U-Net. This work aims to improve
+      the reliability of surface EMG signals under realistic contamination.
+    </div>
+    <div>
+      [<a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank">Paper</a>]
+      [<a href="https://arxiv.org/abs/2410.03843" target="_blank">arXiv</a>]
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Signal Quality Assessment</div>
+    <div class="item-title">Surface EMG Signal Quality Assessment</div>
+    <div class="note">
+      Developed neural quality assessment methods for surface EMG signals,
+      aiming to estimate signal usability without requiring clean reference
+      signals. This research supports more reliable physiological signal analysis
+      in clinical and wearable applications.
+    </div>
+    <div>
+      [<a href="https://arxiv.org/abs/2402.05482" target="_blank">arXiv</a>]
+      [<a href="https://pubmed.ncbi.nlm.nih.gov/40039220/" target="_blank">PubMed</a>]
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Physiological Signal Super-Resolution</div>
+    <div class="item-title">ECG and sEMG Super-Resolution</div>
+    <div class="note">
+      Explored efficient neural architectures for reconstructing high-resolution
+      physiological signals from low-resolution measurements, with applications
+      to ECG and surface EMG signal acquisition.
+    </div>
+    <div>
+      [<a href="https://doi.org/10.1109/ICASSP49660.2025.10890523" target="_blank">MSECG Paper</a>]
+      [<a href="https://arxiv.org/abs/2412.04861" target="_blank">arXiv</a>]
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Speech Enhancement and Multimodal Learning</div>
+    <div class="item-title">Robust Speech Enhancement and Acoustic/EMG Multimodal Learning</div>
+    <div class="note">
+      Worked on robust speech enhancement and multimodal speech processing,
+      including acoustic/EMG fusion and the integration of pre-trained speech
+      enhancement and recognition models.
+    </div>
+    <div>
+      [<a href="https://arxiv.org/abs/2406.12699" target="_blank">Robust ASR</a>]
+      [<a href="https://doi.org/10.1109/ICASSP43922.2022.9747179" target="_blank">EMGSE Paper</a>]
+    </div>
+  </div>
 
   <h2>Publications</h2>
 
@@ -218,24 +281,6 @@
     </li>
   </ul>
 
-  <h2>Research Experience</h2>
-
-  <div class="item">
-    <div class="item-title">Research Assistant, Bio-ASP Lab</div>
-    <div>Research Center for Information Technology Innovation, Academia Sinica, 2022–present</div>
-    <div class="note">
-      Research on deep learning for biomedical signal processing, physiological signal enhancement, signal quality assessment, and speech enhancement.
-    </div>
-  </div>
-
-  <div class="item">
-    <div class="item-title">Audio Forensics</div>
-    <div>Forensic Science Department, Ministry of Justice Investigation Bureau, 2021–2022</div>
-    <div class="note">
-      Worked on speaker recognition, speech enhancement, and digital audio authenticity analysis.
-    </div>
-  </div>
-
   <h2>Awards</h2>
   <ul>
     <li><span class="year">2025</span> Hon Hai Technology Award</li>
@@ -249,12 +294,12 @@
     <div class="item-title">Ph.D. Student, Graduate Institute of Communication Engineering</div>
     <div>National Taiwan University, 2023–present</div>
   </div>
-  
+
   <div class="item">
     <div class="item-title">M.S., Graduate Institute of Communication Engineering</div>
     <div>National Taiwan University, 2021–2023</div>
   </div>
-  
+
   <div class="item">
     <div class="item-title">B.S., Department of Electrical Engineering</div>
     <div>National Taiwan University, 2012–2016</div>
@@ -283,3 +328,4 @@
   </footer>
 </body>
 </html>
+

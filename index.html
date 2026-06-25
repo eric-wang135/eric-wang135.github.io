@@ -125,6 +125,31 @@
     .paper-links a {
       margin-right: 8px;
     }
+    
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2em;
+    }
+
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 650px) {
+      .header {
+        flex-direction: column;
+      }
+
+      .profile-photo {
+        width: 130px;
+        height: 130px;
+      }
+    }
 
   </style>
 </head>

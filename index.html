@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuan-Chen Wang</title>
-  <meta name="description" content="Kuan-Chen Wang — Ph.D. student at National Taiwan University working on deep learning for biosignal enhancement, signal quality assessment, and super-resolution, with a focus on surface electromyography (sEMG) and electrocardiography (ECG).">
+  <meta name="description" content="Kuan-Chen Wang — Ph.D. student at National Taiwan University working on deep learning for surface electromyography (sEMG) enhancement and signal quality assessment, with secondary work on electrocardiography (ECG).">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
     }
 
     .profile-photo {
-      width: 148px;
+      width: 196px;
       height: 148px;
       object-fit: cover;
       object-position: 55% 45%;
@@ -289,7 +289,7 @@
       body { padding: 44px 20px 0; font-size: 16px; }
       h1 { font-size: 2.15rem; }
       .header { flex-direction: column-reverse; align-items: flex-start; gap: 1.4rem; }
-      .profile-photo { width: 104px; height: 104px; }
+      .profile-photo { width: 140px; height: 106px; }
       .pub, .stack li { grid-template-columns: 1fr; gap: .35rem; }
       .pub-rail { padding-top: 0; }
       .signal { margin-top: 2rem; }
@@ -331,27 +331,31 @@
   <section>
     <h2>Research Overview</h2>
     <p>
-      Surface electromyography (sEMG) and electrocardiography (ECG) are moving out of
-      the laboratory and into wearables, clinics, and long-term home monitoring. The
-      applications built on them — prosthesis control, muscle fatigue assessment,
-      arrhythmia diagnosis — were developed on clean recordings, but recordings made in
-      these settings rarely are: ECG leaks into sEMG measured near the trunk, motion and
-      electrode artifacts corrupt ambulatory ECG, and battery limits push devices toward
-      lower sampling rates. In practice it is often the signal, not the application built
-      on top of it, that limits what can be deployed.
+      Surface electromyography (sEMG) measures muscle activity non-invasively, which is
+      what makes it usable for prosthesis control, rehabilitation, fatigue monitoring, and
+      the clinical assessment of neuromuscular disorders. It is also what makes it fragile:
+      electrodes on the skin pick up whatever else is present — ECG from a nearby heart,
+      powerline interference, motion artifacts, baseline wander — and these distort exactly
+      the amplitude and spectral features those applications read. As sEMG moves out of the
+      laboratory and into wearables and clinics, contamination stops being an edge case, and
+      the signal, rather than the application built on top of it, becomes what limits
+      deployment.
     </p>
     <p>
-      My goal is to make biosignal processing robust enough that these applications can
-      keep working as recording conditions grow more complex.
+      My goal is to make sEMG processing robust enough that these applications can keep
+      working as recording conditions grow more complex.
     </p>
     <p>
-      As a Ph.D. student, I work on deep learning methods for biosignal enhancement,
-      signal quality assessment, and super-resolution. A recurring concern across this
-      work is that a lower reconstruction error does not guarantee a more usable signal:
-      a denoiser can improve waveform metrics while distorting the spectral features that
-      downstream analysis depends on. The methods I have contributed to therefore aim to
-      build physiological structure into the model, and to judge the result by whether
-      those features survive — not by waveform error alone.
+      As a Ph.D. student, I work on deep learning methods for sEMG enhancement and signal
+      quality assessment. A recurring concern across this work is that a lower reconstruction
+      error does not guarantee a more usable signal: a denoiser can improve waveform metrics
+      while distorting the spectral features downstream analysis depends on. The methods I
+      have contributed to therefore build physiological structure into the model as a
+      constraint — masking in a learned representation, restricting denoising to the band
+      where interference dominates, verifying separated components against known contaminant
+      signatures — so a result can be checked against physiological expectations rather than
+      trusted on the strength of a loss value. ECG enhancement and super-resolution form a
+      secondary thread, where the same questions recur under different constraints.
     </p>
   </section>
 
@@ -361,14 +365,15 @@
       <div class="research-card">
         <div class="item-title">sEMG Enhancement and Denoising</div>
         <div class="note">
-          An ongoing line of work on removing ECG artifacts from sEMG, where the
-          two signals overlap in frequency and naive filtering destroys the muscle
-          activity it is meant to preserve. It runs from fully convolutional
-          denoisers through score-based diffusion, representation-masking Transformers,
-          and efficient Mamba networks, and has most recently moved into the
-          time–frequency domain with physiologically informed sub-band masking — so
-          that the spectral features downstream analysis depends on survive the
-          enhancement.
+          Removing contaminants from single-channel sEMG, where interference such as ECG
+          overlaps the muscle signal in frequency and conventional filtering discards the
+          neuromuscular information it is meant to preserve. The line runs from fully
+          convolutional denoisers through score-based diffusion, a representation-masking
+          Transformer, and efficient Mamba networks. TrustEMG-Net showed that training on a
+          time-domain loss alone leaves mean-frequency error higher than it needs to be;
+          SSEMG-Net takes that up by moving into the time–frequency domain, with
+          multi-resolution spectral objectives and a mask restricted to the low-frequency
+          band where ECG dominates.
         </div>
         <div class="paper-links">
           <a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank" rel="noopener">TrustEMG-Net</a>
@@ -382,22 +387,29 @@
       <div class="research-card">
         <div class="item-title">sEMG Signal Quality Assessment</div>
         <div class="note">
-          Neural quality-assessment methods that estimate sEMG usability without a clean
-          reference signal — a prerequisite for trusting enhanced signals in clinical and
-          wearable settings, where ground truth is never available.
+          Judging whether a recording is usable without a clean reference to compare against —
+          the only situation that exists outside a controlled study. Recent work reframes
+          quality assessment as physiology-aware source separation: decompose a recording into
+          the muscle signal and its individual contaminants, verify each separated component
+          against canonical spectral fingerprints, and compute quality indices from what
+          survives. The score becomes inspectable at the waveform level instead of emitted by
+          a black box, and quality criteria can be redefined for a new clinical task without
+          retraining the network.
         </div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2402.05482" target="_blank" rel="noopener">Non-Intrusive sEMG QA</a>
+          <span class="pending">Prism-SQA</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/40039220/" target="_blank" rel="noopener">Non-Intrusive sEMG QA</a>
         </div>
       </div>
 
       <div class="research-card">
         <div class="item-title">ECG Super-Resolution</div>
         <div class="note">
-          Reconstructing high-resolution ECG from low-sampling-rate recordings, so
-          wearable devices can save power without giving up diagnostic fidelity. Recent
-          work applies residual-shifting conditional diffusion to hold up under
-          distribution shift across datasets, where discriminative models degrade.
+          A secondary thread: reconstructing high-resolution ECG from low-sampling-rate
+          recordings, so wearable devices can save power without giving up diagnostic
+          fidelity. Recent work applies residual-shifting conditional diffusion, which
+          degrades less than discriminative models when tested on a dataset it was never
+          trained on.
         </div>
         <div class="paper-links">
           <span class="pending">DiSR-ECG</span>
@@ -406,7 +418,7 @@
       </div>
 
       <div class="research-card">
-        <div class="item-title">Robust Speech Enhancement and Acoustic/sEMG Fusion</div>
+        <div class="item-title">Acoustic/sEMG Fusion and Robust Speech Enhancement</div>
         <div class="note">
           Robust speech enhancement and multimodal speech processing, including
           acoustic/sEMG fusion and the integration of pre-trained speech enhancement
@@ -424,6 +436,14 @@
     <h2>Publications</h2>
 
     <h3>Journal Articles</h3>
+    <div class="pub">
+      <div class="pub-rail"><span class="venue">Under review</span></div>
+      <div class="pub-body">
+        <div class="pub-title">Prism-SQA: An Interpretable and Adaptable Neural Framework for Surface Electromyography Quality Assessment</div>
+        <div class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, S.-Y. Peng, and Y. Tsao</div>
+      </div>
+    </div>
+
     <div class="pub">
       <div class="pub-rail"><span class="venue">IEEE JBHI</span>2025</div>
       <div class="pub-body">

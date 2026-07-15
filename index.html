@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuan-Chen Wang</title>
-  <meta name="description" content="Kuan-Chen Wang — Ph.D. student at National Taiwan University working on deep learning for biomedical signal enhancement, quality assessment, and super-resolution (sEMG, ECG).">
+  <meta name="description" content="Kuan-Chen Wang — Ph.D. student at National Taiwan University working on deep learning for biosignal enhancement, signal quality assessment, and super-resolution, with a focus on surface electromyography (sEMG) and electrocardiography (ECG).">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -178,14 +178,6 @@
       border-color: #d7dbe2;
       box-shadow: 0 1px 2px rgba(20,24,33,.04), 0 6px 20px rgba(20,24,33,.05);
     }
-    .research-card .tag {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: .5rem;
-    }
     .research-card .item-title {
       font-family: var(--display);
       font-weight: 500;
@@ -251,10 +243,11 @@
     }
     .pub-rail .venue { color: var(--ink); font-weight: 500; display: block; }
 
-    .pub-body { font-size: .95rem; line-height: 1.55; }
-    .pub-title { color: var(--ink); font-weight: 500; }
+    .pub-body { font-size: .95rem; line-height: 1.5; }
+    .pub-title { color: var(--ink); font-weight: 500; margin-bottom: .12rem; }
     .pub-authors { color: var(--body); }
     .pub-authors strong { color: var(--ink); font-weight: 600; }
+    .pub-meta { color: var(--muted); font-size: .88em; margin-top: .05rem; }
 
     /* ---------- Simple lists (awards / education) ---------- */
     .stack { list-style: none; padding: 0; margin: 0; }
@@ -336,19 +329,29 @@
   </svg>
 
   <section>
-    <h2>Making biomedical signals reliable in the real world</h2>
+    <h2>Research Overview</h2>
     <p>
-      I develop deep learning methods for physiological signal enhancement, signal
-      quality assessment, and super-resolution, with a focus on surface
-      electromyography (sEMG) and electrocardiography (ECG).
+      Surface electromyography (sEMG) and electrocardiography (ECG) are moving out of
+      the laboratory and into wearables, clinics, and long-term home monitoring. The
+      applications built on them — prosthesis control, muscle fatigue assessment,
+      arrhythmia diagnosis — were developed on clean recordings, but recordings made in
+      these settings rarely are: ECG leaks into sEMG measured near the trunk, motion and
+      electrode artifacts corrupt ambulatory ECG, and battery limits push devices toward
+      lower sampling rates. In practice it is often the signal, not the application built
+      on top of it, that limits what can be deployed.
     </p>
     <p>
-      A central theme of my work is that reconstruction accuracy is not the same as
-      physiological validity: a denoiser can lower waveform error while quietly
-      distorting the spectral features clinicians actually read. I build
-      physiological priors directly into the model, and pair enhancement with
-      quality assessment so a signal's trustworthiness can be judged without a clean
-      reference — the situation in every real clinical and wearable recording.
+      My goal is to make biosignal processing robust enough that these applications can
+      keep working as recording conditions grow more complex.
+    </p>
+    <p>
+      As a Ph.D. student, I work on deep learning methods for biosignal enhancement,
+      signal quality assessment, and super-resolution. A recurring concern across this
+      work is that a lower reconstruction error does not guarantee a more usable signal:
+      a denoiser can improve waveform metrics while distorting the spectral features that
+      downstream analysis depends on. The methods I have contributed to therefore aim to
+      build physiological structure into the model, and to judge the result by whether
+      those features survive — not by waveform error alone.
     </p>
   </section>
 
@@ -356,12 +359,11 @@
     <h2>Featured Research</h2>
     <div class="featured-grid">
       <div class="research-card">
-        <div class="tag">sEMG Enhancement</div>
         <div class="item-title">sEMG Enhancement and Denoising</div>
         <div class="note">
-          My longest-running line of work: removing ECG artifacts from sEMG, where the
+          An ongoing line of work on removing ECG artifacts from sEMG, where the
           two signals overlap in frequency and naive filtering destroys the muscle
-          activity it is meant to preserve. The line runs from fully convolutional
+          activity it is meant to preserve. It runs from fully convolutional
           denoisers through score-based diffusion, representation-masking Transformers,
           and efficient Mamba networks, and has most recently moved into the
           time–frequency domain with physiologically informed sub-band masking — so
@@ -378,7 +380,6 @@
       </div>
 
       <div class="research-card">
-        <div class="tag">Signal Quality Assessment</div>
         <div class="item-title">sEMG Signal Quality Assessment</div>
         <div class="note">
           Neural quality-assessment methods that estimate sEMG usability without a clean
@@ -391,7 +392,6 @@
       </div>
 
       <div class="research-card">
-        <div class="tag">ECG Super-Resolution</div>
         <div class="item-title">ECG Super-Resolution</div>
         <div class="note">
           Reconstructing high-resolution ECG from low-sampling-rate recordings, so
@@ -406,7 +406,6 @@
       </div>
 
       <div class="research-card">
-        <div class="tag">Speech &amp; Multimodal Learning</div>
         <div class="item-title">Robust Speech Enhancement and Acoustic/sEMG Fusion</div>
         <div class="note">
           Robust speech enhancement and multimodal speech processing, including
@@ -428,12 +427,11 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">IEEE JBHI</span>2025</div>
       <div class="pub-body">
-        <span class="pub-title">TrustEMG-Net: Using Representation-Masking Transformer with U-Net for Surface Electromyography Enhancement.</span>
-        <span class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, S.-Y. Peng, and Y. Tsao.</span>
-        <em>IEEE Journal of Biomedical and Health Informatics</em>, vol. 29, no. 4, pp. 2506–2520.
+        <div class="pub-title">TrustEMG-Net: Using Representation-Masking Transformer with U-Net for Surface Electromyography Enhancement</div>
+        <div class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, S.-Y. Peng, and Y. Tsao</div>
+        <div class="pub-meta">vol. 29, no. 4, pp. 2506&ndash;2520</div>
         <div class="paper-links">
-          <a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank" rel="noopener">DOI</a>
-          <a href="https://arxiv.org/abs/2410.03843" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank" rel="noopener">Paper</a>
         </div>
       </div>
     </div>
@@ -443,29 +441,26 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">IEEE EMBC</span>2026</div>
       <div class="pub-body">
-        <span class="pub-title">SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising.</span>
-        <span class="pub-authors">C.-H. Shih, <strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, and Y. Tsao.</span>
-        <em>Proc. IEEE EMBC.</em>
+        <div class="pub-title">SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising</div>
+        <div class="pub-authors">C.-H. Shih, <strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, and Y. Tsao</div>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-rail"><span class="venue">IEEE EMBC</span>2026</div>
       <div class="pub-body">
-        <span class="pub-title">DiSR-ECG: Residual Shifting Conditional Diffusion for Robust ECG Super-Resolution.</span>
-        <span class="pub-authors">F.-Y. Hsu, I. Chiu, <strong>K.-C. Wang</strong>, S.-Y. Peng, and Y. Tsao.</span>
-        <em>Proc. IEEE EMBC.</em>
+        <div class="pub-title">DiSR-ECG: Residual Shifting Conditional Diffusion for Robust ECG Super-Resolution</div>
+        <div class="pub-authors">F.-Y. Hsu, I. Chiu, <strong>K.-C. Wang</strong>, S.-Y. Peng, and Y. Tsao</div>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2025</div>
       <div class="pub-body">
-        <span class="pub-title">MSEMG: Surface Electromyography Denoising with a Mamba-based Efficient Network.</span>
-        <span class="pub-authors">Y.-T. Liu, <strong>K.-C. Wang</strong>, R. Chao, S. M. Siniscalchi, P.-C. Yeh, and Y. Tsao.</span>
-        <em>Proc. IEEE ICASSP.</em>
+        <div class="pub-title">MSEMG: Surface Electromyography Denoising with a Mamba-based Efficient Network</div>
+        <div class="pub-authors">Y.-T. Liu, <strong>K.-C. Wang</strong>, R. Chao, S. M. Siniscalchi, P.-C. Yeh, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2411.18902" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://arxiv.org/abs/2411.18902" target="_blank" rel="noopener">Paper</a>
           <a href="https://github.com/tonyliu0910/MSEMG" target="_blank" rel="noopener">Code</a>
         </div>
       </div>
@@ -474,12 +469,10 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2025</div>
       <div class="pub-body">
-        <span class="pub-title">MSECG: Incorporating Mamba for Robust and Efficient ECG Super-Resolution.</span>
-        <span class="pub-authors">J. Lin, I. Chiu, <strong>K.-C. Wang</strong>, K.-C. Liu, H.-M. Wang, P.-C. Yeh, and Y. Tsao.</span>
-        <em>Proc. IEEE ICASSP.</em>
+        <div class="pub-title">MSECG: Incorporating Mamba for Robust and Efficient ECG Super-Resolution</div>
+        <div class="pub-authors">J. Lin, I. Chiu, <strong>K.-C. Wang</strong>, K.-C. Liu, H.-M. Wang, P.-C. Yeh, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://doi.org/10.1109/ICASSP49660.2025.10890523" target="_blank" rel="noopener">DOI</a>
-          <a href="https://arxiv.org/abs/2412.04861" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://doi.org/10.1109/ICASSP49660.2025.10890523" target="_blank" rel="noopener">Paper</a>
         </div>
       </div>
     </div>
@@ -487,21 +480,18 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">Interspeech</span>2025</div>
       <div class="pub-body">
-        <span class="pub-title">OMPAL: Bridging Speech and Learning with an Open-Source Mandarin Pronunciation Assessment Corpus for Global Learners.</span>
-        <span class="pub-authors">W.-W. Hsieh, H.-W. Chi, <strong>K.-C. Wang</strong>, P.-C. Yeh, T.-H. Liu, and C.-Y. Chiang.</span>
-        <em>Proc. Interspeech.</em>
+        <div class="pub-title">OMPAL: Bridging Speech and Learning with an Open-Source Mandarin Pronunciation Assessment Corpus for Global Learners</div>
+        <div class="pub-authors">W.-W. Hsieh, H.-W. Chi, <strong>K.-C. Wang</strong>, P.-C. Yeh, T.-H. Liu, and C.-Y. Chiang</div>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-rail"><span class="venue">IEEE EMBC</span>2024</div>
       <div class="pub-body">
-        <span class="pub-title">A Non-Intrusive Neural Quality Assessment Model for Surface Electromyography Signals.</span>
-        <span class="pub-authors">C.-Y. Lee, <strong>K.-C. Wang</strong>, K.-C. Liu, Y.-T. Wang, X. Lu, P.-C. Yeh, and Y. Tsao.</span>
-        <em>Proc. IEEE EMBC.</em>
+        <div class="pub-title">A Non-Intrusive Neural Quality Assessment Model for Surface Electromyography Signals</div>
+        <div class="pub-authors">C.-Y. Lee, <strong>K.-C. Wang</strong>, K.-C. Liu, Y.-T. Wang, X. Lu, P.-C. Yeh, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2402.05482" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/40039220/" target="_blank" rel="noopener">PubMed</a>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/40039220/" target="_blank" rel="noopener">Paper</a>
         </div>
       </div>
     </div>
@@ -509,12 +499,10 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2024</div>
       <div class="pub-body">
-        <span class="pub-title">SDEMG: Score-Based Diffusion Model for Surface Electromyographic Signal Denoising.</span>
-        <span class="pub-authors">Y.-T. Liu, <strong>K.-C. Wang</strong>, K.-C. Liu, S.-Y. Peng, and Y. Tsao.</span>
-        <em>Proc. IEEE ICASSP.</em>
+        <div class="pub-title">SDEMG: Score-Based Diffusion Model for Surface Electromyographic Signal Denoising</div>
+        <div class="pub-authors">Y.-T. Liu, <strong>K.-C. Wang</strong>, K.-C. Liu, S.-Y. Peng, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://doi.org/10.1109/ICASSP48485.2024.10446154" target="_blank" rel="noopener">DOI</a>
-          <a href="https://arxiv.org/abs/2402.03808" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://doi.org/10.1109/ICASSP48485.2024.10446154" target="_blank" rel="noopener">Paper</a>
           <a href="https://github.com/tonyliu0910/SDEMG" target="_blank" rel="noopener">Code</a>
         </div>
       </div>
@@ -523,11 +511,10 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">EUSIPCO</span>2024</div>
       <div class="pub-body">
-        <span class="pub-title">Bridging the Gap: Integrating Pre-trained Speech Enhancement and Recognition Models for Robust Speech Recognition.</span>
-        <span class="pub-authors"><strong>K.-C. Wang</strong>, Y.-J. Li, W.-L. Chen, Y.-W. Chen, Y.-C. Wang, P.-C. Yeh, C. Zhang, and Y. Tsao.</span>
-        <em>Proc. EUSIPCO.</em>
+        <div class="pub-title">Bridging the Gap: Integrating Pre-trained Speech Enhancement and Recognition Models for Robust Speech Recognition</div>
+        <div class="pub-authors"><strong>K.-C. Wang</strong>, Y.-J. Li, W.-L. Chen, Y.-W. Chen, Y.-C. Wang, P.-C. Yeh, C. Zhang, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2406.12699" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://arxiv.org/abs/2406.12699" target="_blank" rel="noopener">Paper</a>
         </div>
       </div>
     </div>
@@ -535,11 +522,10 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2023</div>
       <div class="pub-body">
-        <span class="pub-title">ECG Artifact Removal from Single-Channel Surface EMG Using Fully Convolutional Networks.</span>
-        <span class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, S.-Y. Peng, and Y. Tsao.</span>
-        <em>Proc. IEEE ICASSP.</em>
+        <div class="pub-title">ECG Artifact Removal from Single-Channel Surface EMG Using Fully Convolutional Networks</div>
+        <div class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, S.-Y. Peng, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2210.13271" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://arxiv.org/abs/2210.13271" target="_blank" rel="noopener">Paper</a>
           <a href="https://github.com/eric-wang135/ECG-removal-from-sEMG-by-FCN" target="_blank" rel="noopener">Code</a>
         </div>
       </div>
@@ -548,12 +534,10 @@
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2022</div>
       <div class="pub-body">
-        <span class="pub-title">EMGSE: Acoustic/EMG Fusion for Multimodal Speech Enhancement.</span>
-        <span class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, H.-M. Wang, and Y. Tsao.</span>
-        <em>Proc. IEEE ICASSP.</em>
+        <div class="pub-title">EMGSE: Acoustic/EMG Fusion for Multimodal Speech Enhancement</div>
+        <div class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, H.-M. Wang, and Y. Tsao</div>
         <div class="paper-links">
-          <a href="https://doi.org/10.1109/ICASSP43922.2022.9747179" target="_blank" rel="noopener">DOI</a>
-          <a href="https://arxiv.org/abs/2202.06507" target="_blank" rel="noopener">arXiv</a>
+          <a href="https://doi.org/10.1109/ICASSP43922.2022.9747179" target="_blank" rel="noopener">Paper</a>
         </div>
       </div>
     </div>
@@ -597,7 +581,7 @@
 
   <footer>
     <span>Kuan-Chen Wang</span>
-    <span>Last updated June 2026</span>
+    <span>Last updated July 2026</span>
   </footer>
 </body>
 </html>

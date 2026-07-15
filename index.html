@@ -231,6 +231,31 @@
       border-color: var(--accent);
       text-decoration: none;
     }
+    .paper-links .pending {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--faint);
+      background: var(--bg-soft);
+      border: 1px dashed var(--line);
+      border-radius: 5px;
+      padding: .18em .5em;
+    }
+
+    .pub-note {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: .3rem;
+    }
+    .status {
+      font-family: var(--mono);
+      font-size: .68rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: .05em .35em;
+      white-space: nowrap;
+    }
+    .pub-rail .status { display: inline-block; margin-top: .3rem; }
 
     /* ---------- Publications ---------- */
     .pub {
@@ -343,10 +368,12 @@
       electromyography (sEMG) and electrocardiography (ECG).
     </p>
     <p>
-      A central theme of my work is bridging the gap between noisy, imperfect
-      biosignal recordings and reliable downstream analysis. I am particularly
-      interested in models that are not only accurate, but also robust,
-      interpretable, and practical for clinical and wearable sensing scenarios.
+      A central theme of my work is that reconstruction accuracy is not the same as
+      physiological validity: a denoiser can lower waveform error while quietly
+      distorting the spectral features clinicians actually read. I build
+      physiological priors directly into the model, and pair enhancement with
+      quality assessment so a signal's trustworthiness can be judged without a clean
+      reference — the situation in every real clinical and wearable recording.
     </p>
   </section>
 
@@ -357,15 +384,21 @@
         <div class="tag">sEMG Enhancement</div>
         <div class="item-title">sEMG Enhancement and Denoising</div>
         <div class="note">
-          Deep learning methods for restoring contaminated sEMG signals under
-          realistic noise conditions, spanning representation-masking Transformers,
-          score-based diffusion models, and efficient Mamba-based networks — all
-          aimed at making sEMG reliable enough for downstream analysis.
+          My longest-running line of work: removing ECG artifacts from sEMG, where the
+          two signals overlap in frequency and naive filtering destroys the muscle
+          activity it is meant to preserve. The line runs from fully convolutional
+          denoisers through score-based diffusion, representation-masking Transformers,
+          and efficient Mamba networks, and has most recently moved into the
+          time–frequency domain with physiologically informed sub-band masking — so
+          that the spectral features downstream analysis depends on survive the
+          enhancement.
         </div>
         <div class="paper-links">
+          <a href="https://arxiv.org/abs/2210.13271" target="_blank" rel="noopener">FCN</a>
+          <a href="https://doi.org/10.1109/ICASSP48485.2024.10446154" target="_blank" rel="noopener">SDEMG</a>
           <a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank" rel="noopener">TrustEMG-Net</a>
-          <a href="https://arxiv.org/abs/2402.03808" target="_blank" rel="noopener">SDEMG</a>
           <a href="https://arxiv.org/abs/2411.18902" target="_blank" rel="noopener">MSEMG</a>
+          <span class="pending">SSEMG-Net</span>
         </div>
       </div>
 
@@ -373,27 +406,27 @@
         <div class="tag">Signal Quality Assessment</div>
         <div class="item-title">sEMG Signal Quality Assessment</div>
         <div class="note">
-          Neural quality-assessment methods that estimate sEMG usability without a
-          clean reference signal, supporting more reliable physiological analysis in
-          clinical and wearable applications.
+          Neural quality-assessment methods that estimate sEMG usability without a clean
+          reference signal — a prerequisite for trusting enhanced signals in clinical and
+          wearable settings, where ground truth is never available.
         </div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2402.05482" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/40039220/" target="_blank" rel="noopener">PubMed</a>
+          <a href="https://arxiv.org/abs/2402.05482" target="_blank" rel="noopener">Non-Intrusive sEMG QA</a>
         </div>
       </div>
 
       <div class="research-card">
-        <div class="tag">Super-Resolution</div>
-        <div class="item-title">ECG and sEMG Super-Resolution</div>
+        <div class="tag">ECG Super-Resolution</div>
+        <div class="item-title">ECG Super-Resolution</div>
         <div class="note">
-          Efficient neural architectures for reconstructing high-resolution
-          physiological signals from low-resolution measurements, applied to ECG and
-          sEMG acquisition.
+          Reconstructing high-resolution ECG from low-sampling-rate recordings, so
+          wearable devices can save power without giving up diagnostic fidelity. Recent
+          work applies residual-shifting conditional diffusion to hold up under
+          distribution shift across datasets, where discriminative models degrade.
         </div>
         <div class="paper-links">
           <a href="https://doi.org/10.1109/ICASSP49660.2025.10890523" target="_blank" rel="noopener">MSECG</a>
-          <a href="https://arxiv.org/abs/2412.04861" target="_blank" rel="noopener">arXiv</a>
+          <span class="pending">DiSR-ECG</span>
         </div>
       </div>
 
@@ -406,8 +439,8 @@
           and recognition models.
         </div>
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2406.12699" target="_blank" rel="noopener">Robust ASR</a>
           <a href="https://doi.org/10.1109/ICASSP43922.2022.9747179" target="_blank" rel="noopener">EMGSE</a>
+          <a href="https://arxiv.org/abs/2406.12699" target="_blank" rel="noopener">Robust ASR</a>
         </div>
       </div>
     </div>
@@ -418,11 +451,11 @@
 
     <h3>Journal Articles</h3>
     <div class="pub">
-      <div class="pub-rail"><span class="venue">IEEE JBHI</span>2024</div>
+      <div class="pub-rail"><span class="venue">IEEE JBHI</span>2025</div>
       <div class="pub-body">
         <span class="pub-title">TrustEMG-Net: Using Representation-Masking Transformer with U-Net for Surface Electromyography Enhancement.</span>
         <span class="pub-authors"><strong>K.-C. Wang</strong>, K.-C. Liu, P.-C. Yeh, S.-Y. Peng, and Y. Tsao.</span>
-        <em>IEEE Journal of Biomedical and Health Informatics.</em>
+        <em>IEEE Journal of Biomedical and Health Informatics</em>, vol. 29, no. 4, pp. 2506–2520.
         <div class="paper-links">
           <a href="https://doi.org/10.1109/JBHI.2024.3475817" target="_blank" rel="noopener">DOI</a>
           <a href="https://arxiv.org/abs/2410.03843" target="_blank" rel="noopener">arXiv</a>
@@ -431,6 +464,25 @@
     </div>
 
     <h3>Conference Papers</h3>
+
+    <div class="pub">
+      <div class="pub-rail"><span class="venue">IEEE EMBC</span>2026<br><span class="status">Accepted</span></div>
+      <div class="pub-body">
+        <span class="pub-title">SSEMG-Net: A Spectrogram-Based Mamba Network for Surface Electromyography Denoising.</span>
+        <span class="pub-authors">C.-H. Shih*, <strong>K.-C. Wang</strong>*, K.-C. Liu, P.-C. Yeh, and Y. Tsao.</span>
+        <em>Proc. IEEE EMBC.</em>
+        <div class="pub-note">* Equal contribution.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-rail"><span class="venue">IEEE EMBC</span>2026<br><span class="status">Accepted</span></div>
+      <div class="pub-body">
+        <span class="pub-title">DiSR-ECG: Residual Shifting Conditional Diffusion for Robust ECG Super-Resolution.</span>
+        <span class="pub-authors">F.-Y. Hsu, I. Chiu, <strong>K.-C. Wang</strong>, S.-Y. Peng, and Y. Tsao.</span>
+        <em>Proc. IEEE EMBC.</em>
+      </div>
+    </div>
 
     <div class="pub">
       <div class="pub-rail"><span class="venue">ICASSP</span>2025</div>

@@ -331,19 +331,22 @@
   <section>
     <h2>Research Overview</h2>
     <p>
-      Surface electromyography (sEMG) measures muscle activity non-invasively, which is
-      what makes it usable for prosthesis control, rehabilitation, fatigue monitoring, and
-      the clinical assessment of neuromuscular disorders. It is also what makes it fragile:
-      electrodes on the skin pick up whatever else is present — ECG from a nearby heart,
-      powerline interference, motion artifacts, baseline wander — and these distort exactly
-      the amplitude and spectral features those applications read. As sEMG moves out of the
-      laboratory and into wearables and clinics, contamination stops being an edge case, and
-      the signal, rather than the application built on top of it, becomes what limits
-      deployment.
+      Wearable and portable devices are moving biosignal recording out of the clinic and
+      into daily life — remote health monitoring, rehabilitation at home, long-term
+      tracking. They record under conditions a controlled study never has to face:
+      electrodes shift, power budgets force lower sampling rates, and interference is
+      everywhere. Biosignal processing matters more as a result, because it is increasingly
+      the signal, rather than the application built on top of it, that decides whether any
+      of this works outside the laboratory.
     </p>
     <p>
-      My goal is to make sEMG processing robust enough that these applications can keep
-      working as recording conditions grow more complex.
+      My main focus is surface electromyography (sEMG). Measuring muscle activity
+      non-invasively is what makes sEMG usable for prosthesis control, rehabilitation, and
+      fatigue monitoring — and it is also what makes it fragile: electrodes on the skin pick
+      up whatever else is present, including ECG from a nearby heart, powerline interference,
+      motion artifacts, and baseline wander. These distort exactly the amplitude and spectral
+      features those applications read. My goal is to make sEMG processing robust enough that
+      they keep working as recording conditions grow more complex.
     </p>
     <p>
       As a Ph.D. student, I work on deep learning methods for sEMG enhancement and signal
@@ -354,8 +357,8 @@
       constraint — masking in a learned representation, restricting denoising to the band
       where interference dominates, verifying separated components against known contaminant
       signatures — so a result can be checked against physiological expectations rather than
-      trusted on the strength of a loss value. ECG enhancement and super-resolution form a
-      secondary thread, where the same questions recur under different constraints.
+      trusted on the strength of a loss value. I am also interested in other biosignals,
+      particularly ECG, where the same questions recur under different constraints.
     </p>
   </section>
 
